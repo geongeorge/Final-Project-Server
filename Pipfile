@@ -10,6 +10,7 @@ flask = "*"
 opencv-python = "*"
 pandas = "*"
 numpy = "*"
+tensorflow = "*"
 
 [requires]
 python_version = "3.7"
