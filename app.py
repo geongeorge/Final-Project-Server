@@ -15,5 +15,5 @@ def processImage():
     imagefile = request.files['image']
     filename = werkzeug.utils.secure_filename(imagefile.filename)
     print("\nReceived image File name : " + imagefile.filename)
-    imagefile.save(UPLOADS+filename)
+    imagefile.save(UPLOADS + filename)
     return 'Success !'
