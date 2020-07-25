@@ -41,6 +41,8 @@ def openAndResize(path,size):
 
 # Loading Model 
 model = keras.models.load_model(MODEL_FILE)
+
+# Read the csv file in pandas
 db=pd.read_csv(MODEL_DICT, sep=',',header=None)
 
 # Load sample Image
@@ -53,4 +55,4 @@ result = np.argmax(model.predict(img))
     # alphabet = next(key for key, value in labels_values.items() if value == result) #reverse key lookup
 # original = db[result][2]
 # print("Prediction"+original)
-print(result)
+print(db[2][result])
