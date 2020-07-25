@@ -1,3 +1,5 @@
+# script to test the models working
+
 import tensorflow as tf
 from tensorflow import keras
 import cv2
