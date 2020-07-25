@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.py",
   "scripts": {
-    "serve": "nodemon --watch . --exec 'env FLASK_APP=app.py flask run'"
+    "serve": "nodemon --ext 'py' --exec 'env FLASK_APP=app.py flask run'"
   },
   "author": "",
   "license": "ISC",
