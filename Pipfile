@@ -12,6 +12,7 @@ pandas = "*"
 numpy = "*"
 tensorflow = "*"
 werkzeug = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.7"
