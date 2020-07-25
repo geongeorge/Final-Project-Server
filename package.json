@@ -1,0 +1,11 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.py",
+  "scripts": {
+    "serve": "nodemon --exec 'env FLASK_APP=app.py flask run'"
+  },
+  "author": "",
+  "license": "ISC"
+}
