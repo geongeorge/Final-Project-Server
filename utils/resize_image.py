@@ -5,6 +5,14 @@ import os,sys
 def openAndResize(path,size):
     try:
         im = cv2.imread(path, 0)
+        return resizeImage(im,size)
+    except:
+        print(sys.exc_info()[0])
+        print("Error Image : ",path)
+        return -1,[] #error
+
+def resizeImage(im,size):
+    try:
         old_size = im.shape[:2] # old_size is in (height, width) format
 
         ratio = float(size)/max(old_size)

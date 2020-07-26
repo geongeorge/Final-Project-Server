@@ -13,6 +13,7 @@ numpy = "*"
 tensorflow = "*"
 werkzeug = "*"
 matplotlib = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
