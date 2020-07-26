@@ -1,5 +1,7 @@
 from flask import Flask, escape, request
+from flask_cors import CORS,cross_origin
 import werkzeug
+import shortuuid
 import cv2
 from utils.model_tool import loadModel,runModelOn,getResultFromPrediction
 from utils.image_tool import segment_image
@@ -8,10 +10,12 @@ from utils.image_tool import segment_image
 model = loadModel()
 
 app = Flask(__name__)
+cors = CORS(app)
 
 UPLOADS = 'uploads/'
 
 @app.route('/')
+@cross_origin()
 def hello():
     return 'Hello, world!'
 
@@ -21,6 +25,9 @@ def saveImage():
     filename = werkzeug.utils.secure_filename(imagefile.filename)
     print("\nReceived image File name : " + imagefile.filename)
     print("Saved as "+filename)
+    extension = filename.split(".")[-1]
+    uuid = shortuuid.uuid()
+    filename = uuid+'.'+extension
     imagefile.save(UPLOADS + filename)
     result = _processImage(filename)
     prediction = { 'status': 'ok', 'result': []}

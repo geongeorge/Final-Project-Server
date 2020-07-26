@@ -44,6 +44,10 @@ def segment_image(filename):
     threshimg = cv2.adaptiveThreshold(denoised,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,\
                 cv2.THRESH_BINARY_INV,11,2)
 
+    # sort rectangles from left to right to work for single line
+    # sort according to x value
+    listRect = sorted(listRect, key=lambda k: k[0]) 
+
     # Simple man's smart logic to only detect letters
     # - If length > 4 * height not a letter
     # - If inside another rect ignore
