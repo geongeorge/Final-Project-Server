@@ -10,4 +10,21 @@
 - `npm install`
 - `npm run serve`
 
-# Model test
+# API
+
+## POST `/image`
+
+Body:
+- `image` : file
+
+Response:
+```
+{
+  "result": [
+    "ആ",
+    "അ",
+    "മ"
+  ],
+  "status": "ok"
+}
+```
