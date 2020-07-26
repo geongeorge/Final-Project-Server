@@ -4,3 +4,6 @@ Pipfile.lock
 
 uploads/*
 !uploads/.gitkeep
+
+output/*
+!output/.gitkeep

@@ -2,7 +2,10 @@ import cv2
 import numpy as np
 from cv2 import imwrite,imshow,waitKey,boundingRect, countNonZero, cvtColor, drawContours, findContours, getStructuringElement, imread, morphologyEx, pyrDown, rectangle, threshold
 
-from utils.constants import UPLOADS
+import shortuuid
+from pathlib import Path
+
+from utils.constants import UPLOADS, OUTPUT
 
 def segment_image(filename):
 
@@ -59,10 +62,13 @@ def segment_image(filename):
 
     # final cropped images list
     cropped = []
+    index=0
     for rect in filteredList:
         x, y, w, h = rect
         crop_img = threshimg[y:y+h, x:x+w]
         cropped.append(crop_img)
+        saveImage(filename,crop_img,str(index))
+        index+=1
         # threshimg = rectangle(threshimg, (x, y+rect_height), (x+rect_width, y), (255,255,255),3)
 
     # imshow('',threshimg)
@@ -70,3 +76,11 @@ def segment_image(filename):
     
     # Return the list of cropped images 
     return cropped
+
+#To save an image
+def saveImage(filename,img,name=shortuuid.uuid()):
+    outputDir = OUTPUT+filename
+    Path(outputDir).mkdir(parents=True, exist_ok=True)
+
+    filepath = outputDir+'/'+name+'.png'
+    imwrite(filepath, img)
